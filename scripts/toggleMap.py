@@ -57,7 +57,7 @@ class Toggle:
 
             screen.fill([0, 0, 0])
 
-            screen.blit(pygame.image.load('assets/mini-MAP.PNG'), (300, 85))
+            screen.blit(pygame.image.load('assets/MINI-map.PNG'), (400, 185))
             screen.blit(east, (500, 50))
             screen.blit(west, (500, 550))
             screen.blit(north, (200, 300))

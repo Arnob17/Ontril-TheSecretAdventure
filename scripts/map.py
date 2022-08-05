@@ -55,7 +55,21 @@ class MapManager:
             NPC('moon', nb_points=2, dialog=['Me: Hi..?', 'Moon: Mhm?', 'Me: So, can you help me?', 'Moon: Yeah how?', 'Me: Tell me where is Mount Arnobest', 'Moon: That cursed mount..', 'Moon: Well, I only know Lake Aqua.', 'Moon: W-why?', 'Moon: Dont ask questions. Go to the', 'east-north side of the town', 'Me: Then?', 'Moon: You will find a lake. The part of lake Aqua', 'Me: Yeah then?', 'Moon: In the lake you have to find the point of teleport.'])
         ])
 
-        self.regester_map('lakeAqua')
+        self.regester_map('lakeAqua', portals=[
+            Portal(from_world='lakeAqua', origin_point="world_spawn_lake", target_world='world', teleport_point="back_world"),
+            Portal(from_world='lakeAqua', origin_point="samirland_enter", target_world='samirland', teleport_point="samirland_enter")
+        ], npcs=[
+            NPC('zen', nb_points=2, dialog=['Nubah: Hello', 'Me: Hey, can i get some help?', 'Nubah: Sure', 'Nubah: I want to find my friends, can you help me..?', 'Nubah: okhey!', 'Me: Can you say me?', 'Me: Where can i find the princess of this lake?' 'Nubah: Keep going...']),
+            NPC('zen2', nb_points=2, dialog=['Oxygen: Hey!', 'Me: Can you say me where can I find Aqua?', 'Oxygen: Keep going forward!', 'Me: Oh..']),
+            NPC('msd', nb_points=2, dialog=['Radium: Hello', 'Me: Where can I find Aqua?', 'Radium: Go ahead!']),
+            NPC('Aqua', nb_points=2, dialog=['Aqua: Oh finally you are here', 'Me: Hey, What happened to my friends?', 'Aqua: Calm down! I will help you for find the mystery', 'Me: But how?', 'Aqua: I think you know the famous', 'Aqua: The land of darkness' 'Me: Mhm', 'Aqua: Ya.', 'Aqua: Go to the land of darkness for find the mystery', 'Me: But you?', 'Aqua: Dont worry. I will be there']),
+        ])
+
+        self.regester_map('samirland', portals=[
+            Portal(from_world='samirland', origin_point="samirland_exit", target_world='lakeAqua', teleport_point="world_spawn_lake")
+        ], npcs=[
+            NPC('msd', nb_points=2, dialog=['Samir: Hello', 'Me: Samir T_T. What happened?', 'Samir: Nothing, Its a dark mystery', 'Samir: That dark energy took everything from us..', 'Where is my other friends?', 'Go to the south west side of this land.']),
+        ])
 
         self.teleport_player('player')
 

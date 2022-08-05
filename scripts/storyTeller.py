@@ -7,7 +7,7 @@ class StoryTell:
 
     def __init__(self):
 
-        self.texts = ['Long days ago...', 'There is a boy with his 6 friends..', 'They are passing there day normally..BUT', 'something BAD happened.. and', 'They become separate', 'BUT, now its time for meet with them and find the mystery...', 'Welcome to the Ontril: The secret adventure!', 'FIND THE MYSTERY!', 'ENJOY!']
+        self.texts = ['Many days ago...', 'A boy was with his 6 friends..', 'They were spending their time well..BUT', 'Something goes wrong.. AND', 'They get separated', 'Welcome to the Ontril: The secret adventure!', 'FIND THE MYSTERY!', 'ENJOY!']
 
         self.letter_index = 0
 

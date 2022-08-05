@@ -5,13 +5,14 @@ from scripts.map import MapManager
 from scripts.player import Player
 from scripts.storyTeller import StoryTell
 from scripts.toggleMap import Toggle
+from scripts.endScreen import end
 
 class Game:
     def __init__(self):
         pygame.mixer.init()
         self.screen = pygame.display.set_mode((1000, 600), pygame.RESIZABLE)
         pygame.display.set_caption('Ontril: The Secret Adventure')
-
+        pygame.display.set_icon(pygame.image.load('assets/favIco.PNG'))
         self.player = Player()
 
         self.map_manager = MapManager(self.screen, self.player)
@@ -19,6 +20,8 @@ class Game:
         self.dialog_box = DialogueBox()
 
         self.storyTell = StoryTell()
+
+        self.end = end()
 
         self.toggle = Toggle()
 
@@ -58,6 +61,7 @@ class Game:
             self.dialog_box.render(self.screen)
             self.storyTell.render(self.screen)
             self.toggle.render(self.screen)
+            self.end.render(self.screen)
             pygame.display.flip()
 
             for events in pygame.event.get():
@@ -79,6 +83,12 @@ class Game:
                         ])
                     if events.key == pygame.K_m:
                         self.toggle.execture_map()
+                    if self.map_manager.current_map == 'samirland' and events.key == pygame.K_SPACE:
+                        point = self.map_manager.get_object('endingscreen')
+                        rect = pygame.Rect(point.x, point.y, point.width, point.height)
+                        if self.player.feet.colliderect(rect):
+                            self.end.execute()
+
             clock.tick(60)
     
     def main_menu(self):
